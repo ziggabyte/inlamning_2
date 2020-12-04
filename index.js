@@ -41,38 +41,40 @@ function initInput() {
 function initButton() {
   //create button element and set the text to "login" (TIP: use .textContent)
   ////Add it to the form element. (TIP: use .appendChild).
-  let button = document.createElement("button");
-  button.textContent = "login";
-  form.appendChild(button);
 
   //Add click eventListener for button and call validateLoginInfo function inside it.
   //if validateLoginInfo is true alert user with "Welcome" text.
   //if validateLoginInfo is false add border style to the input element: "3px solid red". (TIP: use .style.border).
+
+  let button = document.createElement("button");
+  button.textContent = "Log in";
+  form.appendChild(button);
+
   button.addEventListener("click", () => {
-      if (validateLoginInfo()){
-          alert("Welcome");
-      } 
-      else {
-          input.style.border = "3px solid red";
-      }
+    if (validateLoginInfo()) {
+      alert("Welcome");
+    }
+    else {
+      input.style.border = "3px solid red";
+    }
   })
 };
 
 function validateLoginInfo() {
   //Get the input using form input element (TIP: use .value)
   //if the attempt is in the attempts array return true if not return false.
-  let attempt = input.value;
-  let isAttemptInAttempts = false;
-  
+  let username = input.value;
+  let isUsernameInAttempts = false;
+
   for (let i = 0; i < attempts.length; i++) {
-      if (attempt === attempts[i]) {
-        isAttemptInAttempts = true;
-        break;
-      }
+    if (username === attempts[i]) {
+      isUsernameInAttempts = true;
+      break;
+    }
   }
 
-  return isAttemptInAttempts;
+  return isUsernameInAttempts;
 }
 
 //Write code here to call the init function only after the dom has been loaded (TIP: check "DOMContentLoaded" event)
-init();
+window.addEventListener("DOMContentLoaded", init);

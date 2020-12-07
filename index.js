@@ -72,7 +72,6 @@ function validateLoginInfo() {
       break;
     }
   }
-
   return isUsernameInAttempts;
 }
 
